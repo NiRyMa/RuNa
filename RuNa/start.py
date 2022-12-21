@@ -48,7 +48,7 @@ while True:
                     print("Succes login!")
                     sock.sendto('1'.encode(), addr)
                     clients[name] = addr
-                    keys[name] = pub#.replace('|','\n').replace('_', ' ')
+                    keys[name] = pub
                     players.append(addr)
                     break
                 elif users[name] != passwd:
@@ -58,7 +58,7 @@ while True:
                 users[name] = passwd
                 sock.sendto('1'.encode(), addr)
                 clients[name] = addr
-                keys[name] = pub#.replace('|','\n').replace('_', ' ')
+                keys[name] = pub
                 players.append(addr)
                 break
     else:
