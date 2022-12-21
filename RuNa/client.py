@@ -39,7 +39,7 @@ def receving(name, sock):
             while True:
                 data, addr = sock.recvfrom(1024)
                 otpravitel, kras, data = data.split(' '.encode(), 2)
-                print('['+otpravitel.decode()+']'+' -=- '+":"+str(datetime.now().time())+":" + ' -=- ' + (rsa.decrypt(data, private_key)).decode())
+                print('['+'\033[31m{}\033[0m'.format(otpravitel.decode())+']'+' -=- '+":"+'\033[32m{}\033[0m'.format(str(datetime.now().time()))+":" + ' -=- ' + (rsa.decrypt(data, private_key)).decode())
                 time.sleep(0.2)
         except:
             pass
@@ -51,7 +51,7 @@ server = ("0.0.0.0", 2571)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((host, port))
-sock.setblocking(1)#нада
+sock.setblocking(1)
 
 while True:
     if not join:

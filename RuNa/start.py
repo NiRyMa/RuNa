@@ -63,7 +63,7 @@ while True:
                 break
     else:
         otpravitel, poluchatel, data = data.split(' '.encode(), 2)
-        print("FROM ["+otpravitel.decode()+"] FOR ["+poluchatel.decode()+"] IN ["+str(datetime.now())+"]: ")
+        print("FROM ["+'\033[31m{}\033[0m'.format(otpravitel.decode())+"] FOR ["+'\033[32m{}\033[0m'.format(poluchatel.decode())+"] IN ["+'\033[34m{}\033[0m'.format(str(datetime.now()))+"]: ")
         print(data)
         if poluchatel.decode() in clients and poluchatel.decode() != otpravitel.decode():
                 sock.sendto((otpravitel+" :: ".encode()+data),clients[poluchatel.decode()])
