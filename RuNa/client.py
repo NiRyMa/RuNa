@@ -1,7 +1,6 @@
 import socket, threading, time, hashlib, rsa
 from datetime import datetime
 
-#тута шаманить с шифрованием
 eng="qwertyuiop[]asdfghjkl;'zxcvbnm,."
 rus="йцукенгшщзхъфывапролджэячсмитьбю"
 shutdown = 0
@@ -30,7 +29,7 @@ def register():
         for j in range(len(rus)):
             if passwd[i]==rus[j]:
                 passwd=passwd.replace(passwd[i],eng[j])
-    passwd = hashlib.sha256(passwd.encode()).hexdigest()#Разберись с шифрованием sha256
+    passwd = hashlib.sha256(passwd.encode()).hexdigest()
     return name+' '+passwd+' '+(pub.decode().replace(' ','_').replace('\n','|'))
     
 def receving(name, sock):
@@ -64,7 +63,7 @@ while True:
             if data.decode() == '1':
                 join = 1
                 sock.setblocking(0)
-                rt = threading.Thread(target = receving, args = ("RecvThread", sock))# разберись что за многопотчность
+                rt = threading.Thread(target = receving, args = ("RecvThread", sock))
                 rt.start()
                 print("Что бы отправить другому пользователю сообщение введите его в формате \nusername message")
         else:
