@@ -38,7 +38,7 @@ def receving(name, sock):
         try:
             while True:
                 data, addr = sock.recvfrom(1024)
-                otpravitel, kras, data = data.split(' '.encode())
+                otpravitel, kras, data = data.split(' '.encode(), 2)
                 print('['+otpravitel.decode()+']'+' -=- '+":"+str(datetime.now().time())+":" + ' -=- ' + (rsa.decrypt(data, private_key)).decode())
                 time.sleep(0.2)
         except:
